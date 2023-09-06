@@ -13,7 +13,7 @@ a = int(input("Enter lower limit\n"))
 b = int(input("\nEnter upper limit\n"))
 
 # generate a random number
-random_num = random.randint(a,b+1)
+random_num = random.randint(a,b)
 
 # guess number input
 guess_num = int(input("\nNow, make a guess\n"))
@@ -42,7 +42,6 @@ if guess_num == random_num:
 
 # prompt for user choice if user got it wrong in the first try
 while flag != 1:
-
     print("\nMmm...That's Wrong!")
     x = user_choice()
 
@@ -67,14 +66,14 @@ while flag != 1:
         # take hint
         elif x == 2:
             print("\nYOUR HINT: ")
-
-            if guess_num > random_num:
+            
+            if guess_num not in range(a,b+1):
+                print("\nYour guess is out of range")
+            elif guess_num > random_num:
                 print("\nYour guess is too big")
             elif guess_num < random_num:
                 print("\nYour number is too small")
-            else:
-                print("\nYour guess is out of range")
-        
+            
             #prompt for making a choice again
             x = user_choice()
         
